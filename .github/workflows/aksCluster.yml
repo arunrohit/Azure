@@ -12,6 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Checkout only k8/deployment.yml from remote repo
+        uses: actions/checkout@v4
+        with:
+          repository: http://github.com/ABC-GENERAL/BLAZEMETER
+          ref: main
+          sparse-checkout: |
+            k8/deployment.yml
+          path: remote
+
       - name: Azure Login
         uses: azure/login@v1
         with:
